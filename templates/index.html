@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Info</title>
+</head>
+<body>
+    <h1>Pokémon Information</h1>
+
+    <form method="POST" action="/">
+        <label for="pokemon_name">Enter Pokémon Name:</label>
+        <input type="text" id="pokemon_name" name="pokemon_name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {% if pokemon %}
+        <h2>{{ pokemon.name | capitalize }}</h2>
+        <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }}">
+        <p>Height: {{ pokemon.height }}</p>
+        <p>Weight: {{ pokemon.weight }}</p>
+        <p>Base Experience: {{ pokemon.base_experience }}</p>
+    {% endif %}
+</body>
+</html>
